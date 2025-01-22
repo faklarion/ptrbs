@@ -30,7 +30,7 @@ class Tbl_kapal_keluar extends CI_Controller
         $config['per_page'] = 10;
         $config['page_query_string'] = FALSE;
         $config['total_rows'] = $this->Tbl_kapal_keluar_model->total_rows($q);
-        $tbl_kapal_keluar = $this->Tbl_kapal_keluar_model->get_limit_data($config['per_page'], $start, $q);
+        $tbl_kapal_keluar = $this->Tbl_kapal_keluar_model->get_all();
         $config['full_tag_open'] = '<ul class="pagination pagination-sm no-margin pull-right">';
         $config['full_tag_close'] = '</ul>';
         $this->load->library('pagination');
@@ -70,12 +70,12 @@ class Tbl_kapal_keluar extends CI_Controller
         $data = array(
             'button' => 'Create',
             'action' => site_url('tbl_kapal_keluar/create_action'),
-	    'id_kapal_keluar' => set_value('id_kapal_keluar'),
-	    'id_kapal' => set_value('id_kapal'),
-	    'tanggal_keluar' => set_value('tanggal_keluar'),
-	    'pelabuhan_tujuan' => set_value('pelabuhan_tujuan'),
-	    'muatan_keluar' => set_value('muatan_keluar'),
-	    'alasan_keluar' => set_value('alasan_keluar'),
+            'id_kapal_keluar' => set_value('id_kapal_keluar'),
+            'id_kapal' => set_value('id_kapal'),
+            'tanggal_keluar' => set_value('tanggal_keluar'),
+            'pelabuhan_tujuan' => set_value('pelabuhan_tujuan'),
+            'muatan_keluar' => set_value('muatan_keluar'),
+            'alasan_keluar' => set_value('alasan_keluar'),
 	);
         $this->template->load('template','tbl_kapal_keluar/tbl_kapal_keluar_form', $data);
     }
@@ -88,13 +88,18 @@ class Tbl_kapal_keluar extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'id_kapal' => $this->input->post('id_kapal',TRUE),
-		'tanggal_keluar' => $this->input->post('tanggal_keluar',TRUE),
-		'pelabuhan_tujuan' => $this->input->post('pelabuhan_tujuan',TRUE),
-		'muatan_keluar' => $this->input->post('muatan_keluar',TRUE),
-		'alasan_keluar' => $this->input->post('alasan_keluar',TRUE),
-	    );
+                'id_kapal' => $this->input->post('id_kapal',TRUE),
+                'tanggal_keluar' => $this->input->post('tanggal_keluar',TRUE),
+                'pelabuhan_tujuan' => $this->input->post('pelabuhan_tujuan',TRUE),
+                'muatan_keluar' => $this->input->post('muatan_keluar',TRUE),
+                'alasan_keluar' => $this->input->post('alasan_keluar',TRUE),
+	        );
 
+            $dataKapal = array(
+                'status' => 2,
+            );
+
+            $this->Tbl_kapal_model->update($this->input->post('id_kapal',TRUE), $dataKapal);
             $this->Tbl_kapal_keluar_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success 2');
             redirect(site_url('tbl_kapal_keluar'));
@@ -148,7 +153,14 @@ class Tbl_kapal_keluar extends CI_Controller
     {
         $row = $this->Tbl_kapal_keluar_model->get_by_id($id);
 
+        $idKapal = $row->id_kapal;
+
+        $data = array(
+            'status' => 0,
+        );
+
         if ($row) {
+            $this->Tbl_kapal_model->update($idKapal, $data);
             $this->Tbl_kapal_keluar_model->delete($id);
             $this->session->set_flashdata('message', 'Delete Record Success');
             redirect(site_url('tbl_kapal_keluar'));

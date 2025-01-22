@@ -354,10 +354,53 @@
                     "lengthChange": true,     // Pilihan jumlah data per halaman
                 });
             });
-        </script>
-        <script>
+        
             $(document).ready(function() {
                 $('#tabel_kapal').DataTable({
+                    // Opsi tambahan
+                    "paging": true,           // Aktifkan pagination
+                    "searching": true,        // Aktifkan pencarian
+                    "ordering": true,         // Aktifkan pengurutan
+                    "info": true,             // Tampilkan informasi
+                    "lengthChange": true,     // Pilihan jumlah data per halaman
+                });
+            });
+        
+            $(document).ready(function() {
+                $('#tabel_kapal_keluar').DataTable({
+                    // Opsi tambahan
+                    "paging": true,           // Aktifkan pagination
+                    "searching": true,        // Aktifkan pencarian
+                    "ordering": true,         // Aktifkan pengurutan
+                    "info": true,             // Tampilkan informasi
+                    "lengthChange": true,     // Pilihan jumlah data per halaman
+                });
+            });
+
+            $(document).ready(function() {
+                $('#tabel_kapal_berlayar').DataTable({
+                    // Opsi tambahan
+                    "paging": true,           // Aktifkan pagination
+                    "searching": true,        // Aktifkan pencarian
+                    "ordering": true,         // Aktifkan pengurutan
+                    "info": true,             // Tampilkan informasi
+                    "lengthChange": true,     // Pilihan jumlah data per halaman
+                });
+            });
+
+            $(document).ready(function() {
+                $('#tabel_kapal_parkir').DataTable({
+                    // Opsi tambahan
+                    "paging": true,           // Aktifkan pagination
+                    "searching": true,        // Aktifkan pencarian
+                    "ordering": true,         // Aktifkan pengurutan
+                    "info": true,             // Tampilkan informasi
+                    "lengthChange": true,     // Pilihan jumlah data per halaman
+                });
+            });
+
+            $(document).ready(function() {
+                $('#tabel_kapal_perbaikan').DataTable({
                     // Opsi tambahan
                     "paging": true,           // Aktifkan pagination
                     "searching": true,        // Aktifkan pencarian

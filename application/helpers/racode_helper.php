@@ -15,6 +15,9 @@ function cmb_dinamis($name,$table,$field,$pk,$selected=null,$order=null){
     return $cmb;  
 }
 
+function rupiah($duit) {
+    return "Rp " . number_format($duit, 0, ",", ".");
+}
 function tgl_indo($tanggal){
 	$bulan = array (
 		1 =>   'Januari',

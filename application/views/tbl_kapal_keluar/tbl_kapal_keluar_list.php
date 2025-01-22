@@ -52,7 +52,7 @@
                 <tr>
 			<td width="10px"><?php echo ++$start ?></td>
 			<td><?php echo $tbl_kapal_keluar->nomer_kapal ?> - <?php echo $tbl_kapal_keluar->nama_kapal ?></td>
-			<td><?php echo $tbl_kapal_keluar->tanggal_keluar ?></td>
+			<td><?php echo tgl_indo($tbl_kapal_keluar->tanggal_keluar) ?></td>
 			<td><?php echo $tbl_kapal_keluar->pelabuhan_tujuan ?></td>
 			<td><?php echo $tbl_kapal_keluar->muatan_keluar ?></td>
 			<td><?php echo $tbl_kapal_keluar->alasan_keluar ?></td>
@@ -62,7 +62,7 @@
 				//echo '  '; 
 				echo anchor(site_url('tbl_kapal_keluar/update/'.$tbl_kapal_keluar->id_kapal_keluar),'<i class="fa fa-pencil-square-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm"'); 
 				echo '  '; 
-				echo anchor(site_url('tbl_kapal_keluar/delete/'.$tbl_kapal_keluar->id_kapal_keluar),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+				echo anchor(site_url('tbl_kapal_keluar/delete/'.$tbl_kapal_keluar->id_kapal_keluar),'<i class="fa fa-trash-o" aria-hidden="true"></i>','class="btn btn-danger btn-sm" Delete onclick="javascript: return confirm(\'Are You Sure ?\')"'); 
 				?>
 			</td>
 		</tr>
