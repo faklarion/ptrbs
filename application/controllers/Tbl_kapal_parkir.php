@@ -117,13 +117,13 @@ class Tbl_kapal_parkir extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('tbl_kapal_parkir/update_action'),
-		'id_kapal_parkir' => set_value('id_kapal_parkir', $row->id_kapal_parkir),
-		'id_kapal' => set_value('id_kapal', $row->id_kapal),
-		'tanggal_parkir' => set_value('tanggal_parkir', $row->tanggal_parkir),
-		'durasi_parkir' => set_value('durasi_parkir', $row->durasi_parkir),
-		'lokasi_parkir' => set_value('lokasi_parkir', $row->lokasi_parkir),
-		'biaya_parkir' => set_value('biaya_parkir', $row->biaya_parkir),
-		'alasan_parkir' => set_value('alasan_parkir', $row->alasan_parkir),
+                'id_kapal_parkir' => set_value('id_kapal_parkir', $row->id_kapal_parkir),
+                'id_kapal' => set_value('id_kapal', $row->id_kapal),
+                'tanggal_parkir' => set_value('tanggal_parkir', $row->tanggal_parkir),
+                'durasi_parkir' => set_value('durasi_parkir', $row->durasi_parkir),
+                'lokasi_parkir' => set_value('lokasi_parkir', $row->lokasi_parkir),
+                'biaya_parkir' => set_value('biaya_parkir', $row->biaya_parkir),
+                'alasan_parkir' => set_value('alasan_parkir', $row->alasan_parkir),
 	    );
             $this->template->load('template','tbl_kapal_parkir/tbl_kapal_parkir_form', $data);
         } else {
@@ -190,11 +190,13 @@ class Tbl_kapal_parkir extends CI_Controller
 
     public function word()
     {
-        header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=tbl_kapal_parkir.doc");
+       $awal    = $this->input->get('start_date');
+       $akhir   = $this->input->get('end_date');
 
         $data = array(
-            'tbl_kapal_parkir_data' => $this->Tbl_kapal_parkir_model->get_all(),
+            'tbl_kapal_parkir_data' => $this->Tbl_kapal_parkir_model->get_by_date($awal, $akhir),
+            'title' => 'LAPORAN KAPAL PARKIR',
+            'periode' => 'Periode Parkir : '.tgl_indo($awal).' - '.tgl_indo($akhir).'',
             'start' => 0
         );
         

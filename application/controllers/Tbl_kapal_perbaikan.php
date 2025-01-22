@@ -195,11 +195,13 @@ class Tbl_kapal_perbaikan extends CI_Controller
 
     public function word()
     {
-        header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=tbl_kapal_perbaikan.doc");
+       $awal    = $this->input->get('start_date');
+       $akhir   = $this->input->get('end_date');
 
         $data = array(
-            'tbl_kapal_perbaikan_data' => $this->Tbl_kapal_perbaikan_model->get_all(),
+            'tbl_kapal_perbaikan_data' => $this->Tbl_kapal_perbaikan_model->get_by_date($awal, $akhir),
+            'title' => 'LAPORAN KAPAL PERBAIKAN',
+            'periode' => 'Periode Perbaikan : '.tgl_indo($awal).' - '.tgl_indo($akhir).'',
             'start' => 0
         );
         

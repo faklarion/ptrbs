@@ -190,9 +190,7 @@ class Tbl_kapal extends CI_Controller
 
     public function word()
     {
-        header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=tbl_kapal.doc");
-
+       
         $data = array(
             'tbl_kapal_data' => $this->Tbl_kapal_model->get_all(),
             'start' => 0

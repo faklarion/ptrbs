@@ -12,7 +12,7 @@
                 <div class='col-md-9'>
                     <div style="padding-bottom: 10px;">
                         <?php echo anchor(site_url('tbl_kapal/create'), '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?>
-                        <?php echo anchor(site_url('tbl_kapal/word'), '<i class="fa fa-file-word-o" aria-hidden="true"></i> Export Ms Word', 'class="btn btn-primary btn-sm"'); ?>
+                        <?php echo anchor(site_url('tbl_kapal/word'), '<i class="fa fa-file-pdf-o" aria-hidden="true"></i> Print', 'class="btn btn-primary btn-sm" target="_blank"'); ?>
                     </div>
                 </div>
             </div>

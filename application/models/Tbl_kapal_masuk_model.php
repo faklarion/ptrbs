@@ -23,6 +23,14 @@ class Tbl_kapal_masuk_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    function get_by_date($awal, $akhir)
+    {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->join('tbl_kapal', 'tbl_kapal.id_kapal = tbl_kapal_masuk.id_kapal');
+        $this->db->where("tanggal_masuk BETWEEN '$awal' AND '$akhir'");
+        return $this->db->get($this->table)->result();
+    }
+    
     // get data by id
     function get_by_id($id)
     {
@@ -33,12 +41,12 @@ class Tbl_kapal_masuk_model extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id_kapal_masuk', $q);
-	$this->db->or_like('id_kapal', $q);
-	$this->db->or_like('tanggal_masuk', $q);
-	$this->db->or_like('pelabuhan_asal', $q);
-	$this->db->or_like('muatan', $q);
-	$this->db->or_like('status_muatan', $q);
-	$this->db->or_like('status_kapal', $q);
+        $this->db->or_like('id_kapal', $q);
+        $this->db->or_like('tanggal_masuk', $q);
+        $this->db->or_like('pelabuhan_asal', $q);
+        $this->db->or_like('muatan', $q);
+        $this->db->or_like('status_muatan', $q);
+        $this->db->or_like('status_kapal', $q);
 	$this->db->from($this->table);
         return $this->db->count_all_results();
     }

@@ -13,7 +13,25 @@
             <div class='col-md-9'>
             <div style="padding-bottom: 10px;">
                 <?php echo anchor(site_url('tbl_kapal_keluar/create'), '<i class="fa fa-wpforms" aria-hidden="true"></i> Tambah Data', 'class="btn btn-danger btn-sm"'); ?>
-                <?php echo anchor(site_url('tbl_kapal_keluar/word'), '<i class="fa fa-file-word-o" aria-hidden="true"></i> Export Ms Word', 'class="btn btn-primary btn-sm"'); ?>
+                <form method="get" action="<?php echo site_url('tbl_kapal_keluar/word'); ?>" target="_blank">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="start_date">Tanggal Mulai:</label>
+                            <input type="date" id="start_date" name="start_date" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="end_date">Tanggal Akhir:</label>
+                            <input type="date" id="end_date" name="end_date" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Cetak
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
             </div>
             

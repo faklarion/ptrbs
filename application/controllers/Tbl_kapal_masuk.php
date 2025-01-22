@@ -190,12 +190,14 @@ class Tbl_kapal_masuk extends CI_Controller
 
     public function word()
     {
-        header("Content-type: application/vnd.ms-word");
-        header("Content-Disposition: attachment;Filename=tbl_kapal_masuk.doc");
+       $awal    = $this->input->get('start_date');
+       $akhir   = $this->input->get('end_date');
 
         $data = array(
-            'tbl_kapal_masuk_data' => $this->Tbl_kapal_masuk_model->get_all(),
-            'start' => 0
+            'tbl_kapal_masuk_data' => $this->Tbl_kapal_masuk_model->get_by_date($awal, $akhir),
+            'start' => 0,
+            'title' => 'LAPORAN KAPAL MASUK',
+            'periode' => 'Periode Masuk : '.tgl_indo($awal).' - '.tgl_indo($akhir).'',
         );
         
         $this->load->view('tbl_kapal_masuk/tbl_kapal_masuk_doc',$data);

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>harviacode.com - codeigniter crud generator</title>
+        <title>Laporan Data Kapal</title>
         <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>"/>
         <style>
             .word-table {
@@ -16,19 +16,21 @@
         </style>
     </head>
     <body>
-        <h2>Tbl_kapal List</h2>
+        <h2 class="text-center">PT RIMAU BAHTERA SHIPPING</h2>
+        <p class="text-center"><img src="<?= base_url('assets/images/logorbs.png') ?>" width="200px" alt=""></p>
+        <h4 class="text-center">Laporan Data Kapal</h4>
         <table class="word-table" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-		<th>Nomer Kapal</th>
-		<th>Nama Kapal</th>
-		<th>Tipe Kapal</th>
-		<th>Panjang Kapal</th>
-		<th>Lebar Kapal</th>
-		<th>Tinggi Kapal</th>
-		<th>Tahun Kapal</th>
-		<th>Kapasitas Kapal</th>
-		<th>Status Kapal</th>
+                <th>Nomer Kapal</th>
+                <th>Nama Kapal</th>
+                <th>Tipe Kapal</th>
+                <th>Panjang Kapal</th>
+                <th>Lebar Kapal</th>
+                <th>Tinggi Kapal</th>
+                <th>Tahun Kapal</th>
+                <th>Kapasitas Kapal</th>
+                <th>Status Kapal</th>
 		
             </tr><?php
             foreach ($tbl_kapal_data as $tbl_kapal)
@@ -44,7 +46,7 @@
 		      <td><?php echo $tbl_kapal->tinggi_kapal ?></td>
 		      <td><?php echo $tbl_kapal->tahun_kapal ?></td>
 		      <td><?php echo $tbl_kapal->kapasitas_kapal ?></td>
-		      <td><?php echo $tbl_kapal->status_kapal ?></td>	
+		      <td><?php echo renameStatusKapal($tbl_kapal->status) ?></td>	
                 </tr>
                 <?php
             }
@@ -52,3 +54,6 @@
         </table>
     </body>
 </html>
+<script>
+    window.print();
+</script>

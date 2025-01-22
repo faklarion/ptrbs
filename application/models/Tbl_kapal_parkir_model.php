@@ -23,6 +23,14 @@ class Tbl_kapal_parkir_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    function get_by_date($awal, $akhir)
+    {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->join('tbl_kapal', 'tbl_kapal.id_kapal = tbl_kapal_parkir.id_kapal');
+        $this->db->where("tanggal_parkir BETWEEN '$awal' AND '$akhir'");
+        return $this->db->get($this->table)->result();
+    }
+
     // get data by id
     function get_by_id($id)
     {
