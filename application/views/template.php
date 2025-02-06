@@ -409,6 +409,17 @@
                     "lengthChange": true,     // Pilihan jumlah data per halaman
                 });
             });
+
+            $(document).ready(function() {
+                $('#tabel_riwayat_kapal').DataTable({
+                    // Opsi tambahan
+                    "paging": true,           // Aktifkan pagination
+                    "searching": true,        // Aktifkan pencarian
+                    "ordering": true,         // Aktifkan pengurutan
+                    "info": true,             // Tampilkan informasi
+                    "lengthChange": true,     // Pilihan jumlah data per halaman
+                });
+            });
         </script>
         
     </body>

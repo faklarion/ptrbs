@@ -51,6 +51,7 @@ function renameStatusKapal($currentStatus) {
         '3' => 'Berlayar',
         '4' => 'Parkir',
         '5' => 'Dalam Perbaikan',
+        '6' => 'Dalam Data Riwayat'
     ];
 
     // Cek apakah status ada di dalam array mapping
